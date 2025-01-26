@@ -16,8 +16,6 @@ export const PokemonDetails = () => {
     name: pokemon.name,
   });
 
-  console.log('pokemonFeatures', pokemonFeatures);
-
   return (
     <Modal
       className={classes.modal}

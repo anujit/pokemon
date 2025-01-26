@@ -48,14 +48,12 @@ export const GET_POKEMON = gql`
 `;
 
 export const useGetPokemon = ({ id, name }: { id: any; name: string }) => {
-  console.log(id, name);
   const { data, ...queryRes } = useQuery(GET_POKEMON, {
     variables: {
       id,
       name,
     },
   });
-  console.log('data, ', data);
   const pokemon: Pokemon = useMemo(() => data?.pokemon || undefined, [data]);
 
   // const pokemonOptions: PokemonOption[] = useMemo(
