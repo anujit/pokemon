@@ -2,6 +2,7 @@ import { Modal } from '@mui/material';
 import { createUseStyles } from 'react-jss';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useGetPokemon } from '../../hooks/useGetPokemon';
+import { Params } from './Params';
 
 export const PokemonDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -27,7 +28,7 @@ export const PokemonDetails = () => {
       <div className={classes.modalContent}>
         <div className={classes.header}>
           <h2>
-            {pokemon.number} {pokemon.name}
+            {pokemon.number} {pokemon.name.toUpperCase()}
           </h2>
           <Link to="/pokemon">Back</Link>
         </div>
@@ -38,28 +39,20 @@ export const PokemonDetails = () => {
             <>
               <p>{pokemonFeatures.classification}</p>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                  <h2>RESISTANT</h2>
-                  <p>{pokemonFeatures.resistant.join(', ')}</p>
-                </div>
-                <div>
-                  <h2>WEAKNESSES</h2>
-                  <p>{pokemonFeatures.weaknesses.join(', ')}</p>
-                </div>
+                <Params title="Resistant" values={pokemonFeatures.resistant} />
+                <Params
+                  title="Weaknesses"
+                  values={pokemonFeatures.weaknesses}
+                />
               </div>
-              <div>
-                <h2>HEIGHT</h2>
-                <p>
-                  <span>Minimum </span>
-                  <span>{pokemonFeatures.height.minimum}</span>
-                  <span> Maximum </span>
-                  <span>{pokemonFeatures.height.maximum}</span>
-                </p>
-              </div>
-              <div>
-                <h2>TYPES</h2>
-                <p>{pokemonFeatures.types.join(', ')}</p>
-              </div>
+              <Params
+                title="Height"
+                values={[
+                  `Minimum ${pokemonFeatures.height.minimum}`,
+                  `Maximum ${pokemonFeatures.height.maximum}`,
+                ]}
+              />
+              <Params title="Types" values={pokemonFeatures.types} />
             </>
           )}
         </div>
