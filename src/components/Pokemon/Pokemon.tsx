@@ -70,6 +70,7 @@ const useStyles = createUseStyles(
     imageWrapper: {
       borderRadius: '8px',
       overflow: 'hidden',
+      width: '100%',
     },
     image: {
       maxHeight: '100%',
