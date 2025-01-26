@@ -41,10 +41,13 @@ export const PokemonDetails = () => {
             <>
               <p>{pokemonFeatures.classification}</p>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Params title="Resistant" values={pokemonFeatures.resistant} />
+                <Params
+                  title="Resistant"
+                  values={pokemonFeatures.resistant || []}
+                />
                 <Params
                   title="Weaknesses"
-                  values={pokemonFeatures.weaknesses}
+                  values={pokemonFeatures.weaknesses || []}
                 />
               </div>
               <Params
