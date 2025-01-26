@@ -17,6 +17,11 @@ export type Pokemon = {
   };
 };
 
+export type GetPokemonProps = {
+  id: string;
+  name: string;
+};
+
 export const GET_POKEMON = gql`
   query pokemon($id: String, $name: String) {
     pokemon(id: $id, name: $name) {
@@ -43,7 +48,7 @@ export const GET_POKEMON = gql`
   }
 `;
 
-export const useGetPokemon = ({ id, name }: { id: string; name: string }) => {
+export const useGetPokemon = ({ id, name }: GetPokemonProps) => {
   const { data, ...queryRes } = useQuery(GET_POKEMON, {
     variables: {
       id,

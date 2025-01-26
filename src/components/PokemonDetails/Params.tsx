@@ -1,6 +1,16 @@
 import { createUseStyles } from 'react-jss';
 
-export const Params = ({ title, values, separator = ', ' }: any) => {
+type PokemonParamsProps = {
+  title: string;
+  values: string[];
+  separator?: string;
+};
+
+export const Params = ({
+  title,
+  values,
+  separator = ', ',
+}: PokemonParamsProps) => {
   const classes = useStyles();
   return (
     <div>

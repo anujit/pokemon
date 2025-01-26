@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 
-export const Search = ({ onType }: any) => {
+type SearchProps = {
+  onType: (text: string) => void;
+};
+
+export const Search = ({ onType }: SearchProps) => {
   const styles = useStyles();
   const ref = useRef<HTMLInputElement>(null);
 

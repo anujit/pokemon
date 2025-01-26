@@ -9,7 +9,7 @@ import { Pokemon as PokemonType } from '../../hooks/useGetPokemon';
 export const PokemonList = () => {
   const classes = useStyles();
   const { pokemons, loading } = useGetPokemons();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [filteredPokemons, setFilteredPokemons] =
     useState<PokemonType[]>(pokemons);
 
