@@ -4,12 +4,14 @@ import { useGetPokemons } from '../../hooks/useGetPokemons';
 import { Pokemon } from '../Pokemon/Pokemon';
 import { Link, useLocation } from 'react-router-dom';
 import { Search } from '../Search';
+import { Pokemon as PokemonType } from '../../hooks/useGetPokemon';
 
 export const PokemonList = () => {
   const classes = useStyles();
   const { pokemons, loading } = useGetPokemons();
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredPokemons, setFilteredPokemons] = useState(pokemons);
+  const [filteredPokemons, setFilteredPokemons] =
+    useState<PokemonType[]>(pokemons);
 
   useEffect(() => {
     if (!searchTerm) {
@@ -77,7 +79,7 @@ const useStyles = createUseStyles(
     cards: {
       display: 'flex',
       flexWrap: 'wrap',
-      gap: '10px',
+      gap: '12px',
     },
     link: {
       textDecoration: 'none',

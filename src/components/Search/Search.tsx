@@ -1,16 +1,24 @@
+import { useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 
 export const Search = ({ onType }: any) => {
   const styles = useStyles();
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    ref.current?.focus();
+  }, []);
+
   return (
     <div className={styles.root}>
       <input
+        ref={ref}
         className={styles.input}
         onChange={(e) => {
           onType(e.target.value);
         }}
         type="text"
-        placeholder="Search..."
+        placeholder="Search a Pokemon..."
       />
     </div>
   );
@@ -28,6 +36,9 @@ const useStyles = createUseStyles(
       fontSize: '1rem',
       padding: '1rem',
       width: '60%',
+      '&:focus': {
+        outline: 'none',
+      },
     },
   },
   {

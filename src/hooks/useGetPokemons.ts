@@ -6,9 +6,15 @@ export type Pokemon = {
   id: string;
   name: string;
   number: string;
+  image?: string;
   types: string[];
-  image: string;
-  classification: string;
+  classification?: string;
+  resistant?: string[];
+  weaknesses?: string[];
+  height?: {
+    minimum: string;
+    maximum: string;
+  };
 };
 
 export type PokemonOption = {

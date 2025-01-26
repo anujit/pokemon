@@ -13,7 +13,7 @@ export const PokemonDetails = () => {
   const { pokemon } = location.state;
 
   const { pokemonFeatures } = useGetPokemon({
-    id: id,
+    id: id as string,
     name: pokemon.name,
   });
 
@@ -50,8 +50,8 @@ export const PokemonDetails = () => {
               <Params
                 title="Height"
                 values={[
-                  `Minimum ${pokemonFeatures.height.minimum}`,
-                  `Maximum ${pokemonFeatures.height.maximum}`,
+                  `Minimum ${pokemonFeatures.height?.minimum}`,
+                  `Maximum ${pokemonFeatures.height?.maximum}`,
                 ]}
               />
               <Params title="Types" values={pokemonFeatures.types} />

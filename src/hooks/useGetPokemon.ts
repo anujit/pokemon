@@ -6,19 +6,15 @@ export type Pokemon = {
   id: string;
   name: string;
   number: string;
+  image?: string;
   types: string[];
-  classification: string;
-  resistant: string[];
-  weaknesses: string[];
-  height: {
+  classification?: string;
+  resistant?: string[];
+  weaknesses?: string[];
+  height?: {
     minimum: string;
     maximum: string;
   };
-};
-
-export type PokemonOption = {
-  value: Pokemon['id'];
-  label: Pokemon['name'];
 };
 
 export const GET_POKEMON = gql`
@@ -47,7 +43,7 @@ export const GET_POKEMON = gql`
   }
 `;
 
-export const useGetPokemon = ({ id, name }: { id: any; name: string }) => {
+export const useGetPokemon = ({ id, name }: { id: string; name: string }) => {
   const { data, ...queryRes } = useQuery(GET_POKEMON, {
     variables: {
       id,
@@ -55,11 +51,6 @@ export const useGetPokemon = ({ id, name }: { id: any; name: string }) => {
     },
   });
   const pokemon: Pokemon = useMemo(() => data?.pokemon || undefined, [data]);
-
-  // const pokemonOptions: PokemonOption[] = useMemo(
-  //   () => pokemons.map((p: Pokemon) => ({ value: p.id, label: p.name })),
-  //   [pokemons]
-  // );
 
   return {
     pokemonFeatures: pokemon,

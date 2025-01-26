@@ -54,7 +54,7 @@ describe('PokemonList', () => {
         <PokemonList />
       </MemoryRouter>
     );
-    const searchInput = screen.getByPlaceholderText('Search...');
+    const searchInput = screen.getByPlaceholderText('Search a Pokemon...');
     fireEvent.change(searchInput, { target: { value: 'Bulbasaur' } });
     expect(screen.getByText('Bulbasaur')).toBeInTheDocument();
     expect(screen.queryByText('Charmander')).not.toBeInTheDocument();
@@ -66,7 +66,7 @@ describe('PokemonList', () => {
         <PokemonList />
       </MemoryRouter>
     );
-    const searchInput = screen.getByPlaceholderText('Search...');
+    const searchInput = screen.getByPlaceholderText('Search a Pokemon...');
     fireEvent.change(searchInput, { target: { value: 'Bulbasaur' } });
     fireEvent.change(searchInput, { target: { value: '' } });
     expect(screen.getByText('Bulbasaur')).toBeInTheDocument();
