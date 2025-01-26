@@ -39,7 +39,7 @@ export const PokemonList = () => {
           setSearchTerm(txt);
         }}
       />
-      {loading && <div>Loading...</div>}
+      {loading && <div data-testid="loader">Loading...</div>}
       <div className={classes.cards}>
         {filteredPokemons.map((pkmn) => {
           return (

@@ -28,7 +28,9 @@ export const PokemonDetails = () => {
       <div className={classes.modalContent}>
         <div className={classes.header}>
           <h2>
-            {pokemon.number} {pokemon.name.toUpperCase()}
+            <span>{pokemon.number}</span>
+            <span> - </span>
+            <span>{pokemon.name.toUpperCase()}</span>
           </h2>
           <Link to="/pokemon">Back</Link>
         </div>
