@@ -18,7 +18,13 @@ export const PokemonList = () => {
     }
 
     const filtered = pokemons.filter((pkmn) => {
-      return pkmn.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return (
+        pkmn.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pkmn.number.includes(searchTerm) ||
+        pkmn.types.some((t) =>
+          t.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
     });
 
     setFilteredPokemons(filtered);
