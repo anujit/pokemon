@@ -30,6 +30,8 @@ const useStyles = createUseStyles(
   {
     title: {
       opacity: 0.8,
+      fontSize: '18px',
+      margin: '8px 0',
     },
   },
   {

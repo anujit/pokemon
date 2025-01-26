@@ -34,30 +34,32 @@ export const PokemonDetails = () => {
           </h2>
           <Link to="/pokemon">Back</Link>
         </div>
-        <div>
+        <div className={classes.content}>
           {!pokemonFeatures ? (
             <div>Loading...</div>
           ) : (
             <>
               <p>{pokemonFeatures.classification}</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div className={classes.stats}>
+                <div className={classes.pair}>
+                  <Params
+                    title="Resistant"
+                    values={pokemonFeatures.resistant || []}
+                  />
+                  <Params
+                    title="Weaknesses"
+                    values={pokemonFeatures.weaknesses || []}
+                  />
+                </div>
                 <Params
-                  title="Resistant"
-                  values={pokemonFeatures.resistant || []}
+                  title="Height"
+                  values={[
+                    `Minimum ${pokemonFeatures.height?.minimum}`,
+                    `Maximum ${pokemonFeatures.height?.maximum}`,
+                  ]}
                 />
-                <Params
-                  title="Weaknesses"
-                  values={pokemonFeatures.weaknesses || []}
-                />
+                <Params title="Types" values={pokemonFeatures.types} />
               </div>
-              <Params
-                title="Height"
-                values={[
-                  `Minimum ${pokemonFeatures.height?.minimum}`,
-                  `Maximum ${pokemonFeatures.height?.maximum}`,
-                ]}
-              />
-              <Params title="Types" values={pokemonFeatures.types} />
             </>
           )}
         </div>
@@ -85,6 +87,19 @@ const useStyles = createUseStyles(
       width: '70%',
       borderRadius: '12px',
       minHeight: '400px',
+    },
+    pair: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    stats: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+      margin: '20px 0',
+    },
+    content: {
+      padding: '20px 0',
     },
   },
   {
