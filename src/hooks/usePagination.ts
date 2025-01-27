@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const usePagination = <T>(data: T[], itemsPerPage: number) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,6 +15,12 @@ export const usePagination = <T>(data: T[], itemsPerPage: number) => {
     const pageNumber = Math.max(1, page);
     setCurrentPage(() => Math.min(pageNumber, maxPage));
   };
+
+  useEffect(() => {
+    if (maxPage && currentPage > maxPage) {
+      jump(maxPage);
+    }
+  }, [currentPage, maxPage]);
 
   return { jump, currentData, currentPage, maxPage };
 };

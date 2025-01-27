@@ -40,12 +40,6 @@ export const PokemonList = () => {
     // jump(1);
   }, [searchTerm, pokemons]);
 
-  useEffect(() => {
-    if (maxPage && currentPage > maxPage) {
-      jump(maxPage);
-    }
-  }, [currentPage, maxPage]);
-
   const location = useLocation();
 
   return (
@@ -77,17 +71,22 @@ export const PokemonList = () => {
         <div>No results found</div>
       )}
       {maxPage ? (
-        <Pagination
-          renderItem={(item) => {
-            return <PaginationItem className={classes.pagination} {...item} />;
-          }}
-          className={classes.pagination}
-          count={maxPage}
-          page={currentPage}
-          onChange={(_, page) => {
-            jump(page);
-          }}
-        />
+        <div className={classes.paginationWrap}>
+          <Pagination
+            renderItem={(item) => {
+              return (
+                <PaginationItem className={classes.pagination} {...item} />
+              );
+            }}
+            className={classes.pagination}
+            count={maxPage}
+            page={currentPage}
+            onChange={(_, page) => {
+              jump(page);
+            }}
+            color="primary"
+          />
+        </div>
       ) : null}
     </div>
   );
@@ -103,7 +102,6 @@ const useStyles = createUseStyles(
       flexWrap: 'wrap',
       gap: '20px',
       flexDirection: 'column',
-      alignItems: 'center',
     },
     cards: {
       display: 'flex',
@@ -113,14 +111,20 @@ const useStyles = createUseStyles(
     link: {
       textDecoration: 'none',
     },
+    paginationWrap: {
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: '20px',
+      width: '100%',
+    },
     pagination: {
       '& .Mui-selected': {
-        backgroundColor: 'red',
+        backgroundColor: 'transparent',
         color: '#19D5C6',
       },
-      '& .MuiPaginationItem-page': {
+      '& .MuiPaginationItem-root': {
         backgroundColor: 'transparent',
-        color: '#ffffffeb',
+        color: 'white',
       },
     },
   },
