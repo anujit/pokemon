@@ -2,6 +2,9 @@
 
 Web app to show a list of pokemon, get their details and search them.
 
+<img width="1512" alt="Screenshot 2025-01-27 at 9 43 30 AM" src="https://github.com/user-attachments/assets/3bdbf80e-fd3d-46a8-82e2-99610cde4599" />
+
+
 ## Evironment
 
 ```
